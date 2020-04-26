@@ -1,0 +1,7 @@
+.main-brand{
+    color: black;
+    font-size: 60px;
+    text-align: center;
+    font-family: 'Great Vibes', cursive; /* if it doesn't find font, use some cursive font*/
+    
+}
