@@ -1,35 +1,5 @@
-class Bookshelf {
-	constructor() {
-		this.favoriteBooks = [];
-	}
+//this keyword is used to indicate a specific instance
 
-	// TODO: define methods `addFavoriteBook(..)`
-	// and `printFavoriteBooks()`
-}
-
-function addFavoriteBook(bookName) {
-	if (!bookName.includes("Great")) {
-		favoriteBooks.push(bookName);
-	}
-}
-
-function printFavoriteBooks() {
-	console.log(`Favorite Books: ${favoriteBooks.length}`);
-	for (let bookName of favoriteBooks) {
-		console.log(bookName);
-	}
-}
-
-function loadBooks( /* .. */ ) {
-	// TODO: call fakeAjax( .. );
-}
-
-var BOOK_API = "https://some.url/api";
-
-
-// ***********************
-
-// NOTE: don't modify this function at all
 function fakeAjax(url,cb) {
 	setTimeout(function fakeLoadingDelay(){
 		cb([
@@ -41,3 +11,36 @@ function fakeAjax(url,cb) {
 		]);
 	},500);
 }
+
+class Bookshelf {
+	constructor() {
+		this.favoriteBooks = [];
+	}
+	addFavoriteBook(bookName) {
+		if (!bookName.includes("Great")) {
+			this.favoriteBooks.push(bookName);
+		}
+	}
+	printFavoriteBooks() {
+		console.log(`Favorite Books: ${String(this.favoriteBooks.length)}`);
+		for (let bookName of this.favoriteBooks) { 
+			console.log(bookName);
+		}
+	}
+}	
+function loadBooks(theBookshelf) {
+	fakeAjax(BOOK_API, function onBooks(booknames){
+		for(let i =0; i<booknames.length; i++){
+			theBookshelf.addFavoriteBook(booknames[i]);
+		}
+		theBookshelf.printFavoriteBooks;
+	});
+	// TODO: call fakeAjax( .. );
+}
+
+
+const BOOK_API = "https://some.url/api"; //changed from var to const
+
+var theBooks = new Bookshelf;
+loadBooks(theBooks);
+
