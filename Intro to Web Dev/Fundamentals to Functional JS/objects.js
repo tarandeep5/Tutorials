@@ -8,19 +8,19 @@ var person = {
 
 /*
 *when to use "." -
-*methods with objects
-*.then for promise
-*.prototype
+*   methods with objects
+*   .then for promise
+*   .prototype
 *
 *
-*ANYTHING USING A DOT IS AN OBJECT
+*   ANYTHING USING A DOT IS AN OBJECT
 */
 
 console.log(person.name);
 person.name; //this will evaluate to a string that outputs "Mrs. White"
 
 var who = person.name;
-person.name = "Mr.White";
+person.name = "Mr. White";
 console.log(person.name) //still returns "Mrs.White", we are passing by value here
 
 //primative value - String, int, boolean & non-primitive value = Object, promise, etc...
@@ -31,4 +31,25 @@ console.log(person.name) //still returns "Mrs.White", we are passing by value he
 */
 
 //mutating - can update and change values
+
+/* ARRAYS
+* We have properties on our arrays, arrays are objects
+* Most important part of array is .length property
+*/
+
+//we use brackets when we can't use . technically for arrays - because index are number, you can't use . in this case
+
+//ES6 Destructuring
+
+//left side target & right side source
+
+let [first, second] = [true,false] //two different variables, with two different values
+
+const {name, weapon, room} = {
+    "name": "Rusty",
+    "room": "Kitchen",
+    "weapon": "candlestick"
+}
+
+
 
