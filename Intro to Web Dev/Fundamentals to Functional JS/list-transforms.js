@@ -14,6 +14,7 @@ function loopSuspects () {
     for (let i =0; i<game.suspects.length; i++) {
         console.log(game.suspects[i]);
     }
+    
 }
 
  var gameLoop = function () {
