@@ -1,35 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import pet, {ANIMALS} from '@frontendmasters/pet'
-import useDropdown from './useDropdown'
+import React, {useState} from 'react';
+import {ANIMALS} from '@frontendmasters/pet'
 
 const SearchParams = () => {
     //const location = "Seattle, WA";
     const[location, setLocation] = useState("Seattle, WA"); //seattle is default case
+    const[animal, setAnimal] = useState("dog");
+    const[breed, setBreed] = useState("");
     const[breeds, setBreeds] = useState([]);
-    const[animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
-    const[breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);p
-    const[pets, setPets] = useState([]);
-
-    async function requestPets() {
-        const {animals} = await pet.animals({
-            location,
-            breed,
-            type:animal
-        })
-    }
-
-
-
-    useEffect(() => {
-        setBreeds([]);
-        setBreed("");
-        // pet.breeds("dog").then(console.log,console.error);
-
-        pet.breeds(animal).then(({breeds}) =>{
-            const breedStrings = breeds.map(({name}) => name);
-            setBreeds(breedStrings)
-        })
-    }, [animal, setBreed, setBreeds]) //these are the dpdcs on which the effect will run
 
     return (
         <div className = "search-params">
@@ -45,9 +22,7 @@ const SearchParams = () => {
                         setLocation(event.target.value)}
                     }/>
                 </label>
-                <AnimalDropdown/>
-                <BreedDropdown/>
-                {/* <label htmlFor="animal">
+                <label htmlFor="animal">
                     Animal 
                     <select
                         id="animal"
@@ -75,7 +50,7 @@ const SearchParams = () => {
                             <option key = {breedString} value={breedString}></option>
                         ))}
                     </select>
-                </label> */}
+                </label>
                 <button>Submit</button>
             </form>
         </div>
